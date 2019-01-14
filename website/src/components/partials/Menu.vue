@@ -5,34 +5,46 @@
 			<img :src="'https://s.gravatar.com/avatar/49d48379d4ec4f320bcaf8451eb36d9c?s='+45" class="avatar">
 		</el-menu-item>
 		<el-menu-item class="social-item" index="2">
-			<a  target="_blank" href="mailto:anaselalamikh@gmail.com">
-				<img class="social-icon gmail" src="../../assets/socials/gmail.svg">
-			</a>
+			<el-tooltip class="item" effect="dark" content="gmail : anaselalamikh@gmail.com" placement="bottom">
+		      	<a target="_blank" href="mailto:anaselalamikh@gmail.com">
+					<img class="social-icon gmail" src="../../assets/socials/gmail.svg">
+			  	</a>
+		    </el-tooltip>
 		</el-menu-item>
 		<el-menu-item class="social-item" index="3">
-			<a target="_blank" href="https://github.com/khofaai">
-				<img class="social-icon github" src="../../assets/socials/github.svg">
-			</a>
+			<el-tooltip class="item" effect="dark" content="my github account @khofaai" placement="bottom">
+				<a target="_blank" href="https://github.com/khofaai">
+					<img class="social-icon github" src="../../assets/socials/github.svg">
+				</a>
+			</el-tooltip>
 		</el-menu-item>
 		<el-menu-item class="social-item" index="4">
-			<a target="_blank" href="https://npmjs.com/~khofaai">
-				<img class="social-icon npm" src="../../assets/socials/npm.svg">
-			</a>
+			<el-tooltip class="item" effect="dark" content="my npm account @khofaai" placement="bottom">
+				<a target="_blank" href="https://npmjs.com/~khofaai">
+					<img class="social-icon npm" src="../../assets/socials/npm.svg">
+				</a>
+			</el-tooltip>
 		</el-menu-item>
 		<el-menu-item class="social-item" index="5">
-			<a target="_blank" href="https://stackoverflow.com/users/5447416/el-alami-anas">
-				<img class="social-icon stackoverflow" src="../../assets/socials/stackoverflow.svg">
-			</a>
+			<el-tooltip class="item" effect="dark" content="my stackoverflow account @el-alami-anas" placement="bottom">
+				<a target="_blank" href="https://stackoverflow.com/users/5447416/el-alami-anas">
+					<img class="social-icon stackoverflow" src="../../assets/socials/stackoverflow.svg">
+				</a>
+			</el-tooltip>
 		</el-menu-item>
 		<el-menu-item class="social-item" index="6">
-			<a target="_blank" href="https://twitter.com/anaselalami_">
-				<img class="social-icon twitter" src="../../assets/socials/twitter.svg">
-			</a>
+			<el-tooltip class="item" effect="dark" content="my twitter account @anaselalami_" placement="bottom">
+				<a target="_blank" href="https://twitter.com/anaselalami_">
+					<img class="social-icon twitter" src="../../assets/socials/twitter.svg">
+				</a>
+			</el-tooltip>
 		</el-menu-item>
 		<el-menu-item class="social-item" index="7">
-			<a target="_blank" href="https://www.linkedin.com/in/anaselalami/">
-				<img class="social-icon linkedin" src="../../assets/socials/linkedin.svg">
-			</a>
+			<el-tooltip class="item" effect="dark" content="my linkedin account anaselalami" placement="bottom">
+				<a target="_blank" href="https://www.linkedin.com/in/anaselalami/">
+					<img class="social-icon linkedin" src="../../assets/socials/linkedin.svg">
+				</a>
+			</el-tooltip>
 		</el-menu-item>
 	</el-menu>
 </template>
