@@ -1,12 +1,13 @@
 <template>
 	<div class="content">
 		<el-row justify="center">
-			<el-col :xs="{offset:8}" :sm="8" :md="8" :lg="4" :xl="4">
+			<el-col :xs="{offset:6}" :sm="8" :md="8" :lg="4" :xl="4">
 				<img src="https://s.gravatar.com/avatar/49d48379d4ec4f320bcaf8451eb36d9c?s=180" class="avatar">
 			</el-col>
 			<el-col :xs="24" :sm="16" :md="16" :lg="20" :xl="20">
 		        <blockquote>
-		          "A young Web Developer Experienced with history of working in the information technology and services industry. Skilled in Php, Node.js, Javascript. since 2016"
+		        	<h1>Anas El Alami</h1>
+		          	"A young Web Developer Experienced with history of working in the information technology and services industry. Skilled in Php, Node.js, Javascript. since 2016"
 		        </blockquote>
 			</el-col>
       	</el-row>
@@ -176,7 +177,7 @@
 	    margin: auto;
 	    font-style: italic;
 	    color: #333 ;
-	    padding: 3em 30px 3em 75px;
+	    padding: 1.2em 30px 3em 75px;
 	    line-height: 1.6;
 	    background: #fff;
 	    margin-bottom: 20px;
