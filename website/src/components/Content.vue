@@ -1,24 +1,37 @@
 <template>
 	<div class="content">
 		<el-row justify="center">
-			<el-col :xs="{offset:6}" :sm="8" :md="8" :lg="4" :xl="4">
-				<img src="https://s.gravatar.com/avatar/49d48379d4ec4f320bcaf8451eb36d9c?s=180" class="avatar">
+			<el-col class="header" :xs="24" :sm="8" :md="8" :lg="4" :xl="4">
+				<img src="https://s.gravatar.com/avatar/49d48379d4ec4f320bcaf8451eb36d9c?s=160" class="avatar">
 			</el-col>
 			<el-col :xs="24" :sm="16" :md="16" :lg="20" :xl="20">
 		        <blockquote>
-		        	<h1>Anas El Alami</h1>
 		          	"A young Web Developer Experienced with history of working in the information technology and services industry. Skilled in Php, Node.js, Javascript. since 2016"
 		        </blockquote>
 			</el-col>
       	</el-row>
-        <h1>My Packages</h1>
+        <h2 class="title">My Links</h2>
 		<el-row :gutter="12">
-			<el-col v-for="pkg in packages" :xs="24" :sm="12" :md="8" :lg="8" :xl="6">
+			<el-col v-for="link in links" :key="link.name" :xs="8" :sm="8" :md="6" :lg="4" :xl="3">
+				<el-tooltip effect="dark" :content="`my ${link.social} account`" placement="bottom">
+					<a target="_blank" :href="link.href">
+						<el-card shadow="hover">
+							<div ref="cardBody" class="card-body">
+								<img :class="link.social" :src="getImageUri(link.src)">
+							</div>
+						</el-card>
+					</a>
+				</el-tooltip>
+			</el-col>
+		</el-row>
+        <h2 class="title">My Packages</h2>
+		<el-row :gutter="12">
+			<el-col v-for="pkg in packages" :key="pkg.name" :xs="24" :sm="12" :md="8" :lg="8" :xl="6">
 				<el-card shadow="hover">
 					<div slot="header" class="clearfix">
-						<span><a target="_blank" :href="pkg.github">{{ pkg.name }}</a></span>
+						<span><a target="_blank" class="card-link" :href="pkg.github">{{ pkg.name }}</a></span>
 						<div style="float:right;" class="clearfix">
-							<img v-for="tag in pkg.tags" style="margin-left:2px" :src="tag">
+							<img v-for="tag in pkg.tags" :key="tag" style="margin-left:2px" :src="tag">
 						</div>
 					</div>
 					<div ref="cardBody" :style="{'height':getMaxHeight}" class="card-body">
@@ -27,14 +40,14 @@
 				</el-card>
 			</el-col>
 		</el-row>
-        <h1>My Contributions</h1>
+        <h2 class="title">My Contributions</h2>
 		<el-row :gutter="12">
-			<el-col v-for="pkg in contributionPackages" :xs="24" :sm="12" :md="8" :lg="8" :xl="6">
+			<el-col v-for="pkg in contributionPackages" :key="pkg.name" :xs="24" :sm="12" :md="8" :lg="8" :xl="6">
 				<el-card shadow="hover">
 					<div slot="header" class="clearfix">
-						<span><a target="_blank" :href="pkg.github">{{ pkg.name }}</a></span>
+						<span><a target="_blank" class="card-link" :href="pkg.github">{{ pkg.name }}</a></span>
 						<div style="float:right;" class="clearfix">
-							<img v-for="tag in pkg.tags" style="margin-left:2px" :src="tag">
+							<img v-for="tag in pkg.tags" :key="tag" style="margin-left:2px" :src="tag">
 						</div>
 					</div>
 					<div ref="cardBody" :style="{'height':getMaxHeight}" class="card-body">
@@ -51,6 +64,51 @@
 			return {
 				maxHeight:0,
 				maxHeightStyle:'auto',
+				links:[
+					{
+						name:'gmail',
+						href:'mailto:anaselalamikh@gmail.com',
+						src:'gmail.svg',
+						social:'gmail'
+					},
+					{
+						name:'linkedin',
+						href:'https://www.linkedin.com/in/anaselalami/',
+						src:'linkedin.svg',
+						social:'linkedin'
+					},
+					{
+						name:'github',
+						href:'https://github.com/khofaai',
+						src:'github.svg',
+						social:'github'
+					},
+					{
+						name:'npm',
+						href:'https://npmjs.com/~khofaai',
+						src:'npm.svg',
+						social:'npm'
+					},
+					{
+						name:'stackoverflow',
+						href:'https://stackoverflow.com/users/5447416/el-alami-anas',
+						src:'stackoverflow.svg',
+						social:'stackoverflow'
+					},
+					{
+						name:'packagist',
+						href:'https://packagist.org/users/khofaai/',
+						src:'packagist.png',
+						social:'packagist'
+					},
+					{
+						name:'twitter',
+						href:'https://twitter.com/anaselalami_',
+						src:'twitter.svg',
+						social:'twitter'
+					}
+					
+				],
 				packages:[
 					{
 						name:'laraset',
@@ -119,9 +177,12 @@
 					let currHeight = cardBody.clientHeight ;
 					if (this.maxHeight < currHeight) {
 						this.maxHeight = currHeight;
-						this.maxHeightStyle = currHeight+'px';
+						this.maxHeightStyle = (currHeight)+'px';
 					}
 				});
+			},
+			getImageUri(name) {
+				return require('../assets/socials/'+name);
 			}
 		},
 		mounted() {
@@ -139,6 +200,17 @@
 		.content .avatar {
 			margin-left: 0px !important;
 		}
+		.content .header {
+			text-align: center;
+		}	
+	}
+	.title {
+		border-top: 1px solid #c4c1c1;
+		padding-top: 15px;
+	}
+	.card-link {
+		font-weight: bold;
+		color:#222;
 	}
 	.content .avatar {
 		margin-left: 8%;
@@ -177,7 +249,7 @@
 	    margin: auto;
 	    font-style: italic;
 	    color: #333 ;
-	    padding: 1.2em 30px 3em 75px;
+	    padding: 3em 30px 3em 75px;
 	    line-height: 1.6;
 	    background: #fff;
 	    margin-bottom: 20px;
@@ -196,4 +268,32 @@
 		/*margin-top: -10px;*/
 		border-radius: 50%
 	}
+	.card-body {
+		text-align: center;
+	}
+	.card-body img {
+		height: 50px
+	}
+
+	.gmail {
+		/*fill:#D14836;*/
+		filter: invert(34%) sepia(27%) saturate(2508%) hue-rotate(331deg) brightness(103%) contrast(94%);
+	}
+	.npm {
+		/*fill:#CB3837;*/
+		filter: invert(35%) sepia(36%) saturate(1883%) hue-rotate(325deg) brightness(91%) contrast(99%);
+	}
+	.stackoverflow {
+		/*fill:#FE7A16;*/
+		filter: invert(54%) sepia(57%) saturate(1751%) hue-rotate(346deg) brightness(98%) contrast(107%);
+	}
+	.twitter {
+		/*fill:#1DA1F2;*/
+		filter: invert(52%) sepia(86%) saturate(2467%) hue-rotate(176deg) brightness(99%) contrast(92%);
+	}
+	.linkedin {
+		/*fill:#0077B5;*/
+		filter: invert(27%) sepia(92%) saturate(1456%) hue-rotate(177deg) brightness(98%) contrast(102%);
+	}
+
 </style>

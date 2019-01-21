@@ -2,53 +2,10 @@
 	<el-menu class="el-menu-demo" mode="horizontal" @select="handleSelect">
 		<el-menu-item class="submenu" index="1">
 			<div>
-				<span><strong>Anas El Alami</strong> @khofaai</span>
+				<h1><strong>Anas El Alami</strong></h1>
 			</div>
 		</el-menu-item>
-		<template style="display:block">
-			<el-menu-item class="social-item" index="2">
-				<el-tooltip class="item" effect="dark" content="gmail : anaselalamikh@gmail.com" placement="bottom">
-			      	<a target="_blank" href="mailto:anaselalamikh@gmail.com">
-						<img class="social-icon gmail" src="../../assets/socials/gmail.svg">
-				  	</a>
-			    </el-tooltip>
-			</el-menu-item>
-			<el-menu-item class="social-item" index="3">
-				<el-tooltip class="item" effect="dark" content="my github account @khofaai" placement="bottom">
-					<a target="_blank" href="https://github.com/khofaai">
-						<img class="social-icon github" src="../../assets/socials/github.svg">
-					</a>
-				</el-tooltip>
-			</el-menu-item>
-			<el-menu-item class="social-item" index="4">
-				<el-tooltip class="item" effect="dark" content="my npm account @khofaai" placement="bottom">
-					<a target="_blank" href="https://npmjs.com/~khofaai">
-						<img class="social-icon npm" src="../../assets/socials/npm.svg">
-					</a>
-				</el-tooltip>
-			</el-menu-item>
-			<el-menu-item class="social-item" index="5">
-				<el-tooltip class="item" effect="dark" content="my stackoverflow account @el-alami-anas" placement="bottom">
-					<a target="_blank" href="https://stackoverflow.com/users/5447416/el-alami-anas">
-						<img class="social-icon stackoverflow" src="../../assets/socials/stackoverflow.svg">
-					</a>
-				</el-tooltip>
-			</el-menu-item>
-			<el-menu-item class="social-item" index="6">
-				<el-tooltip class="item" effect="dark" content="my twitter account @anaselalami_" placement="bottom">
-					<a target="_blank" href="https://twitter.com/anaselalami_">
-						<img class="social-icon twitter" src="../../assets/socials/twitter.svg">
-					</a>
-				</el-tooltip>
-			</el-menu-item>
-			<el-menu-item class="social-item" index="7">
-				<el-tooltip class="item" effect="dark" content="my linkedin account anaselalami" placement="bottom">
-					<a target="_blank" href="https://www.linkedin.com/in/anaselalami/">
-						<img class="social-icon linkedin" src="../../assets/socials/linkedin.svg">
-					</a>
-				</el-tooltip>
-			</el-menu-item>
-		</template>
+		
 	</el-menu>
 </template>
 <script>
@@ -69,23 +26,37 @@
 a {
 	text-decoration: none
 }
-@media only screen and (max-width: 620px) {
+@media only screen and (max-width: 710px) {
 	.submenu {
 		width: 100%
 	}
 	.submenu div{
-		text-align: right;
+		text-align: center;
+	}
+	.el-menu-item {
+		padding: 0 1.5em;
 	}
 }
-.el-menu--horizontal.el-menu .el-menu-item.submenu {
-	float: right;
+@media only screen and (max-width: 380px) {
+	.el-menu-item {
+		padding: 0 14px !important;
+	}
 }
-.submenu span {
+@media only screen and (max-width: 415px) {
+	.el-menu-item {
+		padding: 0 17px;
+	}
+}
+.el-menu--horizontal.el-menu {
+	/*float: left;*/
+	text-align: center;
+}
+.el-menu--horizontal > .el-menu-item {
+	float: none
+}
+.submenu h1 {
 	margin:0 15px;
-}
-.submenu .avatar {
-	/*margin-top: -10px;*/
-	border-radius: 50%
+	color:#111;
 }
 .social-icon {
 	height: 25px;
@@ -93,9 +64,6 @@ a {
 .social-icon.gmail {
 	/*fill:#D14836;*/
 	filter: invert(34%) sepia(27%) saturate(2508%) hue-rotate(331deg) brightness(103%) contrast(94%);
-}
-.social-icon.github {
-	/*fill:#070707;*/
 }
 .social-icon.npm {
 	/*fill:#CB3837;*/
