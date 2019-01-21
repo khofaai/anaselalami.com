@@ -2,36 +2,37 @@
 	<div class="content">
 		<el-row justify="center">
 			<el-col class="header" :xs="24" :sm="8" :md="8" :lg="4" :xl="4">
-				<img src="https://s.gravatar.com/avatar/49d48379d4ec4f320bcaf8451eb36d9c?s=160" class="avatar">
+				<img alt="anas el alami picture" src="https://s.gravatar.com/avatar/49d48379d4ec4f320bcaf8451eb36d9c?s=160" class="avatar">
 			</el-col>
 			<el-col :xs="24" :sm="16" :md="16" :lg="20" :xl="20">
 		        <blockquote>
-		          	"A young Web Developer Experienced with history of working in the information technology and services industry. Skilled in Php, Node.js, Javascript. since 2016"
+		          	"A young Web Developer Experienced with history of working in the information technology and services industry. Skilled in Php, Node.js, Javascript. since 2016" 
+		          	<small><u><a title="check my resume" target="_blank" href="https://drive.google.com/open?id=1Df-3SCTAEQVoyY5tI6oxkoVy-q_o0hYm">check my resume</a></u></small>
 		        </blockquote>
 			</el-col>
       	</el-row>
-        <h2 class="title">My Links</h2>
+        <h2 class="title">Links</h2>
 		<el-row :gutter="12">
 			<el-col v-for="link in links" :key="link.name" :xs="8" :sm="8" :md="6" :lg="4" :xl="3">
-				<el-tooltip effect="dark" :content="`my ${link.social} account`" placement="bottom">
-					<a target="_blank" :href="link.href">
+				<el-tooltip effect="dark" :content="`${link.social} account`" placement="bottom">
+					<a :title="`my ${link.social} account link`" target="_blank" :href="link.href">
 						<el-card shadow="hover">
 							<div ref="cardBody" class="card-body">
-								<img :class="link.social" :src="getImageUri(link.src)">
+								<img :alt="`my ${link.social} account`" :class="link.social" :src="getImageUri(link.src)">
 							</div>
 						</el-card>
 					</a>
 				</el-tooltip>
 			</el-col>
 		</el-row>
-        <h2 class="title">My Packages</h2>
+        <h2 class="title">Packages</h2>
 		<el-row :gutter="12">
 			<el-col v-for="pkg in packages" :key="pkg.name" :xs="24" :sm="12" :md="8" :lg="8" :xl="6">
 				<el-card shadow="hover">
 					<div slot="header" class="clearfix">
-						<span><a target="_blank" class="card-link" :href="pkg.github">{{ pkg.name }}</a></span>
+						<span><a :title="`my ${pkg.name} link`" target="_blank" class="card-link" :href="pkg.github">{{ pkg.name }}</a></span>
 						<div style="float:right;" class="clearfix">
-							<img v-for="tag in pkg.tags" :key="tag" style="margin-left:2px" :src="tag">
+							<img v-for="tag in pkg.tags" :key="tag" style="margin-left:2px" :alt="`tags of ${pkg.name}`" :src="tag">
 						</div>
 					</div>
 					<div ref="cardBody" :style="{'height':getMaxHeight}" class="card-body">
@@ -40,14 +41,14 @@
 				</el-card>
 			</el-col>
 		</el-row>
-        <h2 class="title">My Contributions</h2>
+        <h2 class="title">Contributions</h2>
 		<el-row :gutter="12">
 			<el-col v-for="pkg in contributionPackages" :key="pkg.name" :xs="24" :sm="12" :md="8" :lg="8" :xl="6">
 				<el-card shadow="hover">
 					<div slot="header" class="clearfix">
-						<span><a target="_blank" class="card-link" :href="pkg.github">{{ pkg.name }}</a></span>
+						<span><a :title="`my ${pkg.name} link`" target="_blank" class="card-link" :href="pkg.github">{{ pkg.name }}</a></span>
 						<div style="float:right;" class="clearfix">
-							<img v-for="tag in pkg.tags" :key="tag" style="margin-left:2px" :src="tag">
+							<img v-for="tag in pkg.tags" :key="tag" style="margin-left:2px" :alt="`tags of ${pkg.name}`" :src="tag">
 						</div>
 					</div>
 					<div ref="cardBody" :style="{'height':getMaxHeight}" class="card-body">
@@ -245,6 +246,7 @@
 	    background-color: #f9fafc;
   	}
   	blockquote {
+  		position: relative;
 	    font-size: 1.2em;
 	    margin: auto;
 	    font-style: italic;
