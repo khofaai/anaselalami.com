@@ -5,14 +5,40 @@
 				<h1><strong>Anas El Alami</strong></h1>
 			</div>
 		</el-menu-item>
+		<el-submenu class="langMenu" index="2">
+			<template slot="title">{{ currentLang }}</template>
+			<el-menu-item v-for="(lang,index) in languages" :key="index" :index="`2-${index}`" @click="switchLangue(lang)">{{lang}}</el-menu-item>
+		</el-submenu>
 	</el-menu>
 </template>
 <script>
-	export default {}
+	export default {
+		data() {
+			return {
+				currentLang:'en',
+				languages:[
+					'en', 'fr'
+				]
+			}
+		},
+		methods: {
+			switchLangue(lang) {
+				this.currentLang = lang;
+				// this.$trans.setLang(lang);
+				window.location = window.location.href;
+			}
+		},
+		mounted() {
+			// console.log({lang: this.$trans.getLang()});
+		}
+	}
 </script>
 <style>
 a {
 	text-decoration: none
+}
+@media only screen and (max-width: 350px) {
+.langMenu .el-submenu__title{padding-left:5px;padding-right:5px}
 }
 @media only screen and (max-width: 710px) {
 	.submenu {
@@ -46,4 +72,11 @@ a {
 	margin:0 15px;
 	color:#111;
 }
+.langMenu {
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 0;
+}
+.el-menu--horizontal > .el-menu-item.is-active, .el-menu--horizontal > .el-submenu.is-active .el-submenu__title {border-bottom: 2px solid transparent}
 </style>

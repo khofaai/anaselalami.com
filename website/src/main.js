@@ -1,13 +1,31 @@
-import Vue from 'vue'
-import App from './App.vue'
+import Vue from 'vue';
+import App from './App.vue';
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
-import Element from 'element-ui'
-import './plugins/element.js'
+import Element from 'element-ui';
+import './plugins/element.js';
 // import './element-variables.scss'
 
-Vue.use(Element)
+import VueTranslater from 'vue-translater';
+
+
+Vue.use(Element);
+Vue.use(VueTranslater,{
+	name:'translate',
+	translate:{
+		en: {
+			'hello':'hello',
+			'developer':'developer',
+			'bio':'A young Web Developer Experienced with history of working in the information technology and services industry. Skilled in Php, Node.js, Javascript. since 2016'
+		},
+		fr: {
+			'hello':'bonjour',
+			'developer':'developer',
+			'bio':`Développeur Web expérimenté plus spécifiquement dans l’écosystème JavaScript, Je souhaite vivement mettre en oeuvre mes compétences pour implémenter des solutions web qui s’étalent à l’échelle internationale`
+		}
+	}
+});
 
 
 new Vue({

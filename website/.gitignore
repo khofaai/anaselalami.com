@@ -2,6 +2,7 @@
 node_modules
 /dist
 /dist.zip
+src/packages
 
 # local env files
 .env.local
