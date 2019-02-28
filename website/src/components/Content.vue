@@ -1,216 +1,35 @@
 <template>
 	<div class="content">
-		<el-row justify="center">
-			<el-col class="header" :xs="24" :sm="8" :md="8" :lg="4" :xl="4">
-				<img alt="anas el alami picture" src="https://s.gravatar.com/avatar/49d48379d4ec4f320bcaf8451eb36d9c?s=160" class="avatar">
-			</el-col>
-			<el-col :xs="24" :sm="16" :md="16" :lg="20" :xl="20">
-				<blockquote v-trans="'bio'"></blockquote>
-			</el-col>
-		</el-row>
-		<h2 class="title">Links</h2>
-		<el-row :gutter="12">
-			<el-col :xs="8" :sm="8" :md="6" :lg="4" :xl="3">
-				<el-tooltip effect="dark" :content="`my resume`" placement="bottom">
-					<a :title="`my resume link`" target="_blank" href="https://drive.google.com/file/d/1laPQoE0X7eOC3Ba1BaE6Na_akBZbpA8t/view">
-						<el-card shadow="hover">
-							<div ref="cardBody" class="card-body">
-								<img :alt="`my resume`" :src="getImageUri('cv-2.svg')">
-								<label class="for-mobile">cv</label>
-							</div>
-						</el-card>
-					</a>
-				</el-tooltip>
-			</el-col>
-			<el-col v-for="link in links" :key="link.name" :xs="8" :sm="8" :md="6" :lg="4" :xl="3">
-				<el-tooltip effect="dark" :content="`${link.social} account`" placement="bottom">
-					<a :title="`my ${link.social} account link`" target="_blank" :href="link.href">
-						<el-card shadow="hover">
-							<div ref="cardBody" class="card-body">
-								<img :alt="`my ${link.social} account`" :class="link.social" :src="getImageUri(link.src)">
-								<label class="for-mobile">{{link.social}}</label>
-							</div>
-						</el-card>
-					</a>
-				</el-tooltip>
-			</el-col>
-		</el-row>
+		<Bio />
+		<h2 class="title">Socials/Links</h2>
+		<Socials />
+		<h2 class="title">Career :</h2>
+		<Career />
+		<h2 class="title">Working With :</h2>
+		<WorkingWith />
 		<h2 class="title">Packages</h2>
-		<el-row :gutter="12">
-			<el-col v-for="pkg in packages" :key="pkg.name" :xs="24" :sm="12" :md="8" :lg="8" :xl="6">
-				<el-card shadow="hover">
-					<div slot="header" class="clearfix">
-						<span><a :title="`my ${pkg.name} link`" target="_blank" class="card-link" :href="pkg.github">{{ pkg.name }}</a></span>
-						<div style="float:right;" class="clearfix">
-							<img v-for="tag in pkg.tags" :key="tag" style="margin-left:2px" :alt="`tags of ${pkg.name}`" :src="tag">
-						</div>
-					</div>
-					<div ref="cardBody" :style="{'height':getMaxHeight}" class="card-body">
-						{{ pkg.description }}
-					</div>
-				</el-card>
-			</el-col>
-		</el-row>
-		<h2 class="title">Contributions</h2>
-		<el-row :gutter="12">
-			<el-col v-for="pkg in contributionPackages" :key="pkg.name" :xs="24" :sm="12" :md="8" :lg="8" :xl="6">
-				<el-card shadow="hover">
-					<div slot="header" class="clearfix">
-						<span><a :title="`my ${pkg.name} link`" target="_blank" class="card-link" :href="pkg.github">{{ pkg.name }}</a></span>
-						<div style="float:right;" class="clearfix">
-							<img v-for="tag in pkg.tags" :key="tag" style="margin-left:2px" :alt="`tags of ${pkg.name}`" :src="tag">
-						</div>
-					</div>
-					<div ref="cardBody" :style="{'height':getMaxHeight}" class="card-body">
-						{{ pkg.description }}
-					</div>
-				</el-card>
-			</el-col>
-		</el-row>
+		<Packages />
+		<h2 class="title">Top Contributions</h2>
+		<Contributions />
 	</div>
 </template>
 <script>
+
+	import Bio from './content-parts/Bio';
+	import Socials from './content-parts/Socials';
+	import Career from './content-parts/Career';
+	import WorkingWith from './content-parts/WorkingWith';
+	import Packages from './content-parts/Packages';
+	import Contributions from './content-parts/Contributions';
+
 	export default {
-		data() {
-			return {
-				maxHeight:0,
-				maxHeightStyle:'auto',
-				links:[
-					{
-						name:'gmail',
-						href:'mailto:anaselalamikh@gmail.com',
-						src:'gmail.svg',
-						social:'gmail'
-					},
-					{
-						name:'linkedin',
-						href:'https://www.linkedin.com/in/anaselalami/',
-						src:'linkedin.svg',
-						social:'linkedin'
-					},
-					{
-						name:'github',
-						href:'https://github.com/khofaai',
-						src:'github.svg',
-						social:'github'
-					},
-					{
-						name:'npm',
-						href:'https://npmjs.com/~khofaai',
-						src:'npm.svg',
-						social:'npm'
-					},
-					{
-						name:'stackoverflow',
-						href:'https://stackoverflow.com/users/5447416/el-alami-anas',
-						src:'stackoverflow.svg',
-						social:'stackoverflow'
-					},
-					{
-						name:'packagist',
-						href:'https://packagist.org/users/khofaai/',
-						src:'packagist.png',
-						social:'packagist'
-					},
-					{
-						name:'twitter',
-						href:'https://twitter.com/anaselalami_',
-						src:'twitter.svg',
-						social:'twitter'
-					}
-					
-				],
-				packages:[
-					{
-						name:'laraset',
-						github:'https://github.com/khofaai/laraset',
-						description:'Laraset is a logical modular management using laravel Artisan CLI',
-						tags:[
-							'https://img.shields.io/github/release/khofaai/laraset.svg',
-							'https://poser.pugx.org/khofaai/laraset/downloads'
-						]
-					},
-					{
-						name:'kh-popover',
-						github:'https://www.npmjs.com/package/kh-popover',
-						description:'Popover/Tooltip build for vuejs framework.',
-						tags:[
-							'https://img.shields.io/npm/v/kh-popover.svg',
-							'https://img.shields.io/npm/dt/kh-popover.svg'
-						]
-					},
-					{
-						name:'vue-fullmodal',
-						github:'https://www.npmjs.com/package/vue-fullmodal',
-						description:'fullmodal for vuejs, this package still in earlier stage',
-						tags:[
-							'https://img.shields.io/npm/dt/vue-fullmodal.svg'
-						]
-					},
-					{
-						name:'vue-dropify',
-						github:'https://www.npmjs.com/package/vue-dropify',
-						description:'Dropify build for vuejs framework',
-						tags:[
-							'https://img.shields.io/npm/v/vue-dropify.svg',
-							'https://img.shields.io/npm/dt/vue-dropify.svg'
-						]
-					},
-					{
-						name:'vue-translater',
-						github:'https://www.npmjs.com/package/vue-translater',
-						description:'vuejs package helps you intergate translation with vuejs apps',
-						tags:[
-							'https://img.shields.io/npm/v/vue-translater.svg',
-						]
-					}
-				],
-				contributionPackages:[
-					{
-						name:'nova-resource-maker',
-						github:'https://github.com/akiyamaSM/nova-resource-maker',
-						description:'A Nova tool that will help you to generate fields array for the resource.',
-						tags:[
-							'https://poser.pugx.org/inani/nova-resource-maker/downloads',
-							'https://poser.pugx.org/inani/nova-resource-maker/v/stable'
-						]
-					},
-					{
-						name:'yumi-console',
-						github:'https://github.com/khofaai/yumi',
-						description:'This package used for chibi framework',
-						tags:[]
-					},
-					{
-						name:'chibi',
-						github:'https://github.com/akiyamaSM/chibi',
-						description:'Chibi is a mini PHP framework to work on small projects, containing the following elements.',
-						tags:[]
-					}
-				]
-			}
-		},
-		methods:{
-			matchCardBodyHeight() {
-				this.$refs.cardBody.map((cardBody) => {
-					let currHeight = cardBody.clientHeight ;
-					if (this.maxHeight < currHeight) {
-						this.maxHeight = currHeight;
-						this.maxHeightStyle = (currHeight)+'px';
-					}
-				});
-			},
-			getImageUri(name) {
-				return require('../assets/socials/'+name);
-			}
-		},
-		mounted() {
-			this.matchCardBodyHeight();
-		},
-		computed:{
-			getMaxHeight() {
-				return this.maxHeightStyle
-			}
+		components:{
+			Bio,
+			Socials,
+			Career,
+			WorkingWith,
+			Packages,
+			Contributions,
 		}
 	}
 </script>
@@ -325,5 +144,7 @@
 		/*fill:#0077B5;*/
 		filter: invert(27%) sepia(92%) saturate(1456%) hue-rotate(177deg) brightness(98%) contrast(102%);
 	}
-
+	.tech-tags {
+		margin:0 5px 5px 0 !important;
+	}
 </style>

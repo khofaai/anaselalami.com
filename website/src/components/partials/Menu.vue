@@ -5,9 +5,9 @@
 				<h1><strong>Anas El Alami</strong></h1>
 			</div>
 		</el-menu-item>
-		<el-submenu class="langMenu" index="2">
+		<el-submenu v-if="false" class="langMenu" index="2">
 			<template slot="title">{{ currentLang }}</template>
-			<el-menu-item v-for="(lang,index) in languages" :key="index" :index="`2-${index}`" @click="switchLangue(lang)">{{lang}}</el-menu-item>
+			<el-menu-item v-for="(lang,index) in languages" :key="index" :index="`2-${index}`" @click="switchLangue(lang)">{{lang.name}}</el-menu-item>
 		</el-submenu>
 	</el-menu>
 </template>
@@ -15,21 +15,17 @@
 	export default {
 		data() {
 			return {
-				currentLang:'en',
+				currentLang:'english',
 				languages:[
-					'en', 'fr'
+					{code:'en',name:'english'}, {code:'fr',name:"francais"}
 				]
 			}
 		},
 		methods: {
 			switchLangue(lang) {
-				this.currentLang = lang;
-				// this.$trans.setLang(lang);
+				this.currentLang = lang.name;
 				window.location = window.location.href;
 			}
-		},
-		mounted() {
-			// console.log({lang: this.$trans.getLang()});
 		}
 	}
 </script>
@@ -79,4 +75,8 @@ a {
 	padding: 0;
 }
 .el-menu--horizontal > .el-menu-item.is-active, .el-menu--horizontal > .el-submenu.is-active .el-submenu__title {border-bottom: 2px solid transparent}
+
+.el-menu-demo {
+	box-shadow: 0px 0px 2px 0px #a3a3a3;
+}
 </style>

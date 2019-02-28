@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <Menu/>
+    <a href="https://drive.google.com/file/d/1laPQoE0X7eOC3Ba1BaE6Na_akBZbpA8t/view" target="_blank" class="get-resume">Get My Resume</a>
     <el-container>
       <el-main>
         <Content />
@@ -33,5 +34,8 @@ body {
   font-family: 'Nunito', 'Avenir',Helvetica, Arial, sans-serif;
   margin: 0;
   background: #efefef
+}
+.get-resume {
+  padding: 2px;background: #1ba39c;display: block;text-align: center;color: white;font-weight: bold;
 }
 </style>
