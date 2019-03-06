@@ -17,11 +17,11 @@ Vue.use(VueTranslater,{
 		en: {
 			'hello':'hello',
 			'developer':'developer',
-			'bio':'A young Web Developer Experienced with history of working in the information technology and services industry. Skilled in Php, Node.js, Javascript. since 2016'
+			'bio':'A passionate Web Developer Experienced with history of working in the information technology and services industry. Skilled in Php, Node.js, Javascript. since 2016'
 		},
 		fr: {
 			'hello':'bonjour',
-			'developer':'developer',
+			'developer':'développeur',
 			'bio':`Développeur Web expérimenté plus spécifiquement dans l’écosystème JavaScript, Je souhaite vivement mettre en oeuvre mes compétences pour implémenter des solutions web qui s’étalent à l’échelle internationale`
 		}
 	}
