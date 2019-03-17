@@ -1,6 +1,6 @@
 <template>
 	<el-row :gutter="12" style="text-align: center">
-		<el-button v-for="tech in technologies" class="tech-tags">{{ tech }}</el-button>
+		<el-button v-for="(tech, index) in technologies" :key="index" class="tech-tags">{{ tech }}</el-button>
 	</el-row>
 </template>
 <script>

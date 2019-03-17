@@ -2,10 +2,10 @@
 	<el-menu class="el-menu-demo" mode="horizontal">
 		<el-menu-item class="submenu" index="1">
 			<div>
-				<h1><strong>Anas El Alami</strong></h1>
+				<h1><strong>{{ title }}</strong></h1>
 			</div>
 		</el-menu-item>
-		<el-submenu v-if="false" class="langMenu" index="2">
+		<el-submenu class="langMenu" index="2">
 			<template slot="title">{{ currentLang }}</template>
 			<el-menu-item v-for="(lang,index) in languages" :key="index" :index="`2-${index}`" @click="switchLangue(lang)">{{lang.name}}</el-menu-item>
 		</el-submenu>
@@ -15,17 +15,33 @@
 	export default {
 		data() {
 			return {
+				title:'Anas El Alami',
 				currentLang:'english',
-				languages:[
-					{code:'en',name:'english'}, {code:'fr',name:"francais"}
-				]
+				languagesNames:{
+					en:'english',
+					fr:'francais',
+				},
+				languages:[]
 			}
 		},
 		methods: {
 			switchLangue(lang) {
-				this.currentLang = lang.name;
-				window.location = window.location.href;
+				if (this.currentLang !== lang.name) {
+					this.currentLang = lang.name;
+					this.$trans.setLang(lang.code);
+					setTimeout(() => {
+						window.location = window.location.href;
+					}, 500);
+				}
+			},
+			getAvailableLanguages() {
+				let langs = this.$trans.getAvailableLanguages();
+				langs.map( lang => this.languages.push({ code: lang, name: this.languagesNames[lang] }) );
 			}
+		},
+		mounted() {
+			this.getAvailableLanguages();
+			this.currentLang = this.languagesNames[this.$trans.getCurrentLang()];
 		}
 	}
 </script>
@@ -79,4 +95,5 @@ a {
 .el-menu-demo {
 	box-shadow: 0px 0px 2px 0px #a3a3a3;
 }
+.el-menu--horizontal .el-menu .el-menu-item.is-active, .el-menu--horizontal .el-menu .el-submenu.is-active > .el-submenu__title {border-left: 3px solid #1ba39c;}
 </style>
