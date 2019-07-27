@@ -1,11 +1,16 @@
 <template>
 	<div id="app">
-		<Menu/>
+		<!-- <Menu/> -->
 		<a 
 			:href="driveResumeLink" 
 			target="_blank" 
 			title="my resume available only in french version, the english version will be available soon"
-			class="get-resume">Get My Resume (fr)</a>
+			class="get-resume">
+			<div class="btnBody">
+				<i class="el-icon-document"></i>
+				<span>resume</span>
+			</div>
+		</a>
 		<el-container>
 			<el-main>
 				<Content />
@@ -41,6 +46,34 @@ body {
 	background: #efefef
 }
 .get-resume {
-	padding: 2px;background: #1ba39c;display: block;text-align: center;color: white;font-weight: bold;
+	position: fixed;
+	right: 10px;
+	top: 10px;
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	font-size: 50px;
+	color: #fff;
+	/* line-height: 500px; */
+	text-align: center;
+	background: #1ba39c;
+}
+.get-resume .btnBody {
+	position: relative;
+	height: 100%;
+}
+.get-resume .btnBody i{
+	left: 26px;
+	top: 13px;
+	font-size: 32px;
+} 
+.get-resume .btnBody span {
+	font-size: 18px;
+	left: 12px;
+	bottom: 13px;
+}
+.get-resume .btnBody i, .get-resume .btnBody span {
+	display: block;
+	position: absolute;
 }
 </style>

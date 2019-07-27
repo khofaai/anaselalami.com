@@ -1,6 +1,6 @@
 <template>
-	<el-row :gutter="12">
-		<el-col v-for="link in links" :key="link.name" :xs="8" :sm="8" :md="6" :lg="4" :xl="3">
+	<el-row  type="flex"  :gutter="12">
+		<el-col v-for="link in links" :key="link.name">
 			<el-tooltip 
 				effect="dark" 
 				placement="bottom"

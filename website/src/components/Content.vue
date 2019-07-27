@@ -34,7 +34,13 @@
 	}
 </script>
 <style>
+	.content {
+		padding: 0 120px;
+	}
 	@media only screen and (max-width: 760px) {
+		.content {
+			padding: 0 5px;
+		}
 		.content .avatar {
 			margin-left: 0px !important;
 		}

@@ -5,7 +5,7 @@
 				<h1><strong>{{ title }}</strong></h1>
 			</div>
 		</el-menu-item>
-		<el-submenu class="langMenu" index="2">
+		<el-submenu v-if="false" class="langMenu" index="2">
 			<template slot="title">{{ currentLang }}</template>
 			<el-menu-item v-for="(lang,index) in languages" :key="index" :index="`2-${index}`" @click="switchLangue(lang)">{{lang.name}}</el-menu-item>
 		</el-submenu>
@@ -21,7 +21,7 @@
 					en:'english',
 					fr:'francais',
 				},
-				languages:[]
+				languages:[{code: 'en', name: 'english'}, {code: 'fr', name: 'Francais'}]
 			}
 		},
 		methods: {

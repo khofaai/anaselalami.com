@@ -1,9 +1,9 @@
 {
 	"experiences": [
 		{
-			"title": "Lead Tech Js - <u class=\"timeline\">Current</u>",
+			"title": "Lead Tech Js",
 			"post": {
-				"name": "Innoveos - <u class=\"timeline\">Started from : 03/2019 </u>",
+				"name": "Innoveos - <u class=\"timeline\">Started from : 03/2019 </u> ( <u class=\"timeline\">Current</u> )",
 				"description": ["As a `<strong>Lead Tech Javascript</strong>`, i have a lot of missions beside Developing, set Developpements Process, also guide our Interns and helps with Technical needs, using <strong>Vuejs</strong>, <strong>ReactJs</strong> <b>(most times)</b>, <strong>Angular 5+</strong>, for server side <strong>ExpressJs</strong> <b>(mode times)</b>, <strong>Nodejs</strong> ..."]
 			}
 		},

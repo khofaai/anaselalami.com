@@ -17,7 +17,7 @@ Vue.use(VueTranslater,{
 		en: {
 			'hello':'hello',
 			'developer':'developer',
-			'bio':'A passionate Web Developer Experienced with history of working in the information technology and services industry. Skilled in Php, Node.js, Javascript. since 2016'
+			'bio':'Im Anas El Alami, 27 years old from Morocco, a passionate Web developer experienced more specifically in the JavaScript ecosystem, I strongly wish to use my skills and knowledge to create web solutions that are spread internationally'
 		},
 		fr: {
 			'hello':'bonjour',

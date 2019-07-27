@@ -1,16 +1,13 @@
 <template>
 	<el-row :gutter="12" style="text-align: left">
-		<el-collapse accordion v-model="openCollapseItem">
-			<el-collapse-item v-for="(experience, index) in experiences" :key="index" :name="index+1" class="collapse-item">
-				<template slot="title">
-				  	<label class='post-entreprise' v-html="experience.title"></label>
-				</template>
+		<el-tabs class="career-tab" value="1" tab-position="left" style="height: 200px;">
+			<el-tab-pane class="career-tab-cotainer" v-for="(experience, index) in experiences" :key="index" :name="`${index+1}`" :label="experience.title">
 				<div class="post-container">
 					<label v-html="experience.post.name"></label>
-					<div v-for="desc in experience.post.description" class="post-description" v-html="desc"></div>
+					<div v-for="(desc, index) in experience.post.description" :key="index" class="post-description" v-html="desc"></div>
 				</div>
-			</el-collapse-item>
-		</el-collapse>
+			</el-tab-pane>
+		</el-tabs>
 	</el-row>
 </template>
 <script>
@@ -27,19 +24,20 @@
 		}
 	}
 </script>
-<style type="text/css">
-	.collapse-item .post-entreprise u,.collapse-item .post-entreprise span{
-		font-weight: normal;
+<style type="sass">
+	.career-tab.el-tabs {
+		background-color: #fff;
 	}
-	.collapse-item .post-entreprise {
-		font-size: 1.5em;
-		padding-left: 15px;
-		font-weight: bold;
-		border-bottom: 3px solid #efefef;
+	.el-tabs__item {
+		font-weight: 600;
 	}
-	.collapse-item .post-container {
-		padding: 15px;
-		font-size: 1.2em;
+	.el-tabs--left .el-tabs__item.is-left {
+		text-align: left;
+		font-size: 16px;
+		border-bottom: 1px solid #eee;
+	}
+	.el-tabs__item.is-active, .el-tabs__item:hover {
+		color: #1BA39C;
 	}
 	.timeline span {color:#303133;}
 	.timeline {color:#a7bab1;}
@@ -51,10 +49,15 @@
 		font-weight: bold;
 		font-size: 1.3em;
 		color:#666;
-		border-left: 3px solid #666;
-		padding-left: 5px;
 		display: block;
 		margin-bottom: 5px;
+	}
+	.career-tab-cotainer {
+		padding: 10px 30px;
+		margin-top: 10px;
+	}
+	.el-tabs__active-bar {
+		background-color: #1BA39C
 	}
 	.post-description {margin-top: 25px;}
 </style>

@@ -4,12 +4,21 @@
 			<el-card shadow="hover">
 				<div slot="header" class="clearfix">
 					<span><a :title="`my ${pkg.name} link`" target="_blank" class="card-link" :href="pkg.github">{{ pkg.name }}</a></span>
-					<div style="float:right;" class="clearfix">
-						<img v-for="tag in pkg.tags" :key="tag" style="margin-left:2px" :alt="`tags of ${pkg.name}`" :src="tag">
-					</div>
 				</div>
 				<div ref="cardBody" :style="{'height':getMaxHeight}" class="card-body">
 					{{ pkg.description }}
+				</div>
+				<div class="card-footer">
+					<div v-if=" pkg.tags.length === 0">
+						no data !
+					</div>
+					<img 
+						v-for="(tag, index) in pkg.tags" 
+						style="margin-left:2px" 
+						:key="index" 
+						:alt="`tags of ${pkg.name}`" 
+						:src="tag" 
+					/>
 				</div>
 			</el-card>
 		</el-col>
@@ -63,3 +72,9 @@
 		}
 	}
 </script>
+<style>
+
+	.card-footer {
+		border-top: 1px solid #ddd;margin-top:10px;padding: 10px 5px 0px 5px
+	}
+</style>
