@@ -7,7 +7,7 @@
 	export default {
 		data() {
 			return {
-				technologies: ['vuejs','reactjs','angular','socket.io','rxjs','expressjs','nodejs','laravel','symfony','jquery','html','css','scss','vuepress','opencart','meteorjs','sql','nosql','lodash',
+				technologies: ['vuejs','reactjs','angular','expressjs','nodejs','socket.io','jquery','rxjs','laravel','symfony','html','css','scss','vuepress','meteorjs','sql','nosql','lodash','nginx','linux OS', 'jenkins', 'docker', 'scrum', 'kanban'
 				],
 			}
 		}
