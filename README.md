@@ -1,4 +1,4 @@
-# anaselalami.xyz
+# anaselalami.com
 You can visit my personal website : https://anaselalami.com
 
 ## Build with
