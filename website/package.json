@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "element-ui": "^2.11.1",
-    "vue": "^2.6.10",
+    "vue": "^3.0.0",
     "vue-translater": "0.0.4"
   },
   "devDependencies": {
